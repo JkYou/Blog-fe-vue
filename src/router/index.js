@@ -2,8 +2,13 @@ import Vue from 'vue'
 import store from '../store'
 import Router from 'vue-router'
 import Index from '@/pages/Index'
+//一级路由
 const Login = resolve => require(["@/pages/Login"], resolve)
 const Admin = resolve => require(["@/pages/Admin"],resolve)
+const NotFund = resolve => require(["@/pages/NotFund"], resolve);
+//二级路由
+const Borad = resolve => require(["$com/Borad"],resolve)
+const Publish = resolve => require(["$com/Publish"], resolve)
 Vue.use(Router)
 const router = new Router({
   mode: "history",
@@ -24,16 +29,26 @@ const router = new Router({
       component: Admin,
       meta: {
         requireAuth: true
-      }
+      },
+      children:[{
+        path:'borad',
+        name:'综述',
+        component:Borad
+      },{
+        path:'publish',
+        name:'发布',
+        component:Publish
+      }]
+    },{
+      path:'/*',
+      name:'404',
+      component:NotFund
     }
   ]
 });
 router.beforeEach((to,from,next)=>{
-  console.info(to);
-  console.info(from);
   if(to.meta.requireAuth===true){
     //权限路由
-    console.info(store.state.oauth_token);
       if (store.state.oauth_token){
         next();
       }else{
