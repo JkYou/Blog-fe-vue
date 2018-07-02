@@ -30,6 +30,7 @@ const router = new Router({
       meta: {
         requireAuth: true
       },
+      redirect:'/admin/publish',
       children:[{
         path:'borad',
         name:'综述',

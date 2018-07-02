@@ -12,6 +12,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.4.2",
+    "github-markdown-css": "^2.10.0",
+    "simplemde": "^1.11.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -53,7 +55,9 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0",
     "less": "^2.7.2",
-    "less-loader": "^4.0.3"
+    "less-loader": "^4.0.3",
+    "highlight.js": "^9.12.0",
+    "marked": "^0.3.9"
   },
   "engines": {
     "node": ">= 6.0.0",
