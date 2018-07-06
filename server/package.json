@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "knex": "^0.13.0",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-log4": "^2.1.0",
+    "koa-mysql-session": "0.0.2",
+    "koa-router": "^7.0.1",
+    "koa-session-minimal": "^3.0.4",
+    "lodash": "^4.17.4",
+    "md5": "^2.2.1",
+    "mkdir-p": "0.0.7",
+    "moment": "^2.22.2",
+    "mysql": "^2.14.1",
+    "pify": "^2.3.0",
+    "wafer-node-sdk": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "debug": "^2.6.8",
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.3.1",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
