@@ -39,6 +39,10 @@ exports.findDataByName = name => {
   let _sql = `select * from users where name="${name}";`;
   return query(_sql);
 };
+exports.insetArt = value => {
+    let _sql = `inset into t_contents set title=?,slug=?,created=?,modified=?,content=?,author_id=?,type=?,status=?,tags=?,categories=?,hits=?,comments_num=?,allow_comment=?,allow_ping=?,allow_feed=?`;
+    return query(_sql,value)
+}
 
 //获取文章总数
 exports.getArtCount = () => {
