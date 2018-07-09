@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "compression-webpack-plugin": "^1.1.11",
     "echarts": "^4.1.0",
     "element-ui": "^2.4.2",
     "github-markdown-css": "^2.10.0",

@@ -58,11 +58,28 @@ export default {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-             this.$store.dispatch("SET_OAUTHTOKEN",{
-               oauth_token:true
-             });
+            this.axios({
+              url:'/login',
+              method:"post",
+              params:{
+                name:this.ruleForm.user,
+                password:this.ruleForm.pass
+              }
+            }).then(res => {
+              console.info(res.data.data);
+              if(res.data.data.sts===1){
+                this.$store.dispatch("SET_OAUTHTOKEN",{
+                  oauth_token:res.data.data.token
+                });
              let redirect = decodeURIComponent(this.$route.query.redirect || '/');
               this.$router.push({path: redirect});
+
+
+              }else{
+                this.$message.error('登录失败。。。');
+              }
+            })
+             
           } else {
              this.$message.error('您输入的格式有误，请重新输入！');
             return false;

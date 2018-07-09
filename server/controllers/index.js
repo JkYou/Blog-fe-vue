@@ -64,12 +64,10 @@ exports.authLogin = async ctx => {
     await Model.findDataByName(name).then(res => {
         if (res.length && res.length >= 0) {
             //用户已存在 
-            console.info(res[0]);
             if (password && md5(password) === res[0].pass) {
-                ctx.session = {
-                    user: name,
-                }
-                ctx.state.data = {  sts: 1, msg: "登录成功"};
+                const token =Math.random().toString(36).substr(2);
+                ctx.session = { token: token };
+                ctx.state.data = { sts: 1, msg: "登录成功", token: token};
             } else {
                 ctx.state.data = {
                         sts: 0,

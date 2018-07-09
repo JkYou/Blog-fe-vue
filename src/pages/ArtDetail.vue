@@ -10,7 +10,6 @@
             <section class="post-content markdown-body" v-html="info.content" v-highlight>
             </section>
             <footer>
-
             </footer>
         </article>
         

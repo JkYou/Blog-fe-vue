@@ -42,20 +42,32 @@ const router = new Router({
         {
           path: "borad",
           name: "综述",
-          component: Borad
+          component: Borad,
+          meta: {
+            requireAuth: true
+          },
         },
         {
           path: "publish",
           name: "发布",
-          component: Publish
+          component: Publish,
+          meta: {
+            requireAuth: true
+          },
         },{
           path:'list',
           name:'管理',
-          component:ArtMana
+          component:ArtMana,
+          meta: {
+            requireAuth: true
+          },
         },{
           path: 'setting',
           name: '设置',
-          component: Setting
+          component: Setting,
+          meta: {
+            requireAuth: true
+          },
         }
       ]
     },
