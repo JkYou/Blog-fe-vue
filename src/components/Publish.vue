@@ -64,8 +64,8 @@ export default {
         return{
             title:"",
             artValue:null,
-            artOptions:[{label:"js",value:1},{label:"css",value:2},{label:"工具使用",value:3},{label:"心情",value:4},{label:"计划",value:5},{label:"vue",value:6},{label:"webpack",value:7}],
-            dynamicTags: ['css', 'js'],
+            artOptions:[{label:"js",value:"js"},{label:"css",value:"css"},{label:"工具使用",value:"工具使用"},{label:"心情",value:"心情"},{label:"计划",value:"计划"},{label:"vue",value:"vue"},{label:"webpack",value:"webpack"}],
+            dynamicTags: [],
             inputVisible: false,
             inputValue: '',
         }
@@ -94,7 +94,19 @@ export default {
             this.inputValue = '';
         },
         submit(e) {
-            console.info(this.$store.state.art_content);
+            this.axios({
+                method: 'post',
+                url: '/insetArt',
+                params:{
+                    title:this.title,
+                    content:this.$store.state.art_content.art_content,
+                    tags:this.dynamicTags.join(","),
+                    categories:this.artValue,
+                    auth_id:"1"
+                }
+            }).then(res => {
+                console.info(res);
+            })
         }
     }
     

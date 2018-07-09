@@ -6,9 +6,12 @@ import Index from '@/pages/Index'
 const Login = resolve => require(["@/pages/Login"], resolve)
 const Admin = resolve => require(["@/pages/Admin"],resolve)
 const NotFund = resolve => require(["@/pages/NotFund"], resolve);
+const ArtDetail = resolve => require(["@/pages/ArtDetail"],resolve);
 //二级路由
 const Borad = resolve => require(["$com/Borad"],resolve)
 const Publish = resolve => require(["$com/Publish"], resolve)
+const Setting = resolve => require(["$com/Setting"], resolve);
+const ArtMana = resolve => require(["$com/ArtMana"], resolve);
 Vue.use(Router)
 const router = new Router({
   mode: "history",
@@ -17,6 +20,10 @@ const router = new Router({
       path: "/",
       name: "Index",
       component: Index
+    },{
+      path:'/art/:id',
+      name:"art",
+      component:ArtDetail
     },
     {
       path: "/login",
@@ -30,20 +37,32 @@ const router = new Router({
       meta: {
         requireAuth: true
       },
-      redirect:'/admin/publish',
-      children:[{
-        path:'borad',
-        name:'综述',
-        component:Borad
-      },{
-        path:'publish',
-        name:'发布',
-        component:Publish
-      }]
-    },{
-      path:'/*',
-      name:'404',
-      component:NotFund
+      redirect: "/admin/borad",
+      children: [
+        {
+          path: "borad",
+          name: "综述",
+          component: Borad
+        },
+        {
+          path: "publish",
+          name: "发布",
+          component: Publish
+        },{
+          path:'list',
+          name:'管理',
+          component:ArtMana
+        },{
+          path: 'setting',
+          name: '设置',
+          component: Setting
+        }
+      ]
+    },
+    {
+      path: "/*",
+      name: "404",
+      component: NotFund
     }
   ]
 });

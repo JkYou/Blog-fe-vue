@@ -14,16 +14,28 @@
                                 background-color="#545c64"
                                 text-color="#fff"
                                 active-text-color="#ffd04b">
-                                <!-- <router-link to="/admin/borad">
+                                <router-link to="/admin/borad">
                                     <el-menu-item index="1">
                                         <i class="el-icon-menu"></i>
                                         <span slot="title">综述</span>
                                     </el-menu-item>
-                                </router-link> -->
+                                </router-link>
                                 <router-link to="/admin/publish">
-                                 <el-menu-item index="1">
-                                    <i class="el-icon-menu"></i>
+                                 <el-menu-item index="2">
+                                    <i class="el-icon-news"></i>
                                     <span slot="title">发布</span>
+                                </el-menu-item>
+                                </router-link>
+                                <router-link to="/admin/list">
+                                 <el-menu-item index="3">
+                                    <i class="el-icon-edit"></i>
+                                    <span slot="title">管理</span>
+                                </el-menu-item>
+                                </router-link>
+                                <router-link to="/admin/setting">
+                                 <el-menu-item index="2">
+                                    <i class="el-icon-setting"></i>
+                                    <span slot="title">设置</span>
                                 </el-menu-item>
                                 </router-link>
                                 </el-menu>

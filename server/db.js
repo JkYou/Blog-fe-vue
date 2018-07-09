@@ -1,8 +1,8 @@
 var mysql = require('mysql');
 var pool = mysql.createPool({
     host: "47.98.120.163",
-  user: "root",
-  password: "admin",
+    user: "root",
+    password: "admin",
     database: "blog",
     port: 3306
 });
@@ -40,7 +40,7 @@ exports.findDataByName = name => {
   return query(_sql);
 };
 exports.insetArt = value => {
-    let _sql = `inset into t_contents set title=?,slug=?,created=?,modified=?,content=?,author_id=?,type=?,status=?,tags=?,categories=?,hits=?,comments_num=?,allow_comment=?,allow_ping=?,allow_feed=?`;
+    let _sql = `insert into t_contents set title=?,slug=?,created=?,modified=?,content=?,author_id=?,type=?,status=?,tags=?,categories=?,hits=?,comments_num=?,allow_comment=?,allow_ping=?,allow_feed=?`;
     return query(_sql,value)
 }
 
@@ -57,6 +57,6 @@ exports.getArtListByPage = (pageStart, pageEnd) => {
 };
 //根据id搜索文章
 exports.getDetail = id => {
-    let _sql= `select *from t_contents where id=${id};`
+    let _sql = `select *from t_contents where cid=${id};`
     return query(_sql);
 }

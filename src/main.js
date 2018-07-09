@@ -14,7 +14,6 @@ import 'simplemde/dist/simplemde.min.css'
 import "@/assets/library/font-awesome-4.7.0/css/font-awesome.min.css";
 // markdown主题
 import 'github-markdown-css'
-// $(".editor-preview-side").addClass("markdown-body");
 // 字体图标
 import "@/assets/font/iconfont.css";
 import "@/assets/font/iconfont.js";
@@ -22,7 +21,9 @@ import "@/assets/font/iconfont.js";
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 axios.defaults.timeout = 10000;
-axios.defaults.baseURL = "http://localhost:8088/";
+axios.defaults.baseURL = "http://localhost:5757/blog/";
+axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded";
 Vue.use(ElementUI);
 Vue.use(Highlight);
 /* eslint-disable no-new */

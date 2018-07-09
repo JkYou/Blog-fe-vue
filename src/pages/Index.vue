@@ -12,22 +12,24 @@
             <a href="#" class="scroll-down" @click="scrollTop"><i class="icon iconfont icon-moreunfold fn"></i></a>
         </header>
         <div id="content" class="content" ref="content">           
-        <article class="post" v-for="(item,index) in info.list" :key="index">
+        <article class="post" v-for="(item,index) in info.list" :key="index" @click="goDetail(item)">
             <header class="post-header">
                 <h2 class="post-title">
                     <a href="#">{{item.title}}</a>
                 </h2>
             </header>
             <section class="post-excerpt">
-              <p>{{item.content.substring(0,150)}}</p>
+              <p v-html="item.content.substring(0,150)"></p>
             </section>
             <footer class="post-meta">
                  <i class="icon iconfont icon-clock"></i>
                   <time>{{new Date(item.modified).toDateString()}}</time>
             </footer> 
-        </article>         
+        </article>  
+        <p v-show="end>=info.total" class="ti">没有更多了</p>       
     </div>
-    <div class="next"><i class="icon iconfont icon-moreunfold fn" @click.stop="loadMore"></i></div>  
+    
+    <div class="next" v-show="end<=info.total"><i class="icon iconfont icon-moreunfold fn" @click.stop="loadMore"></i></div>  
     <Foot/>
     </div>
 </template>
@@ -38,8 +40,9 @@ export default {
     data () {
         return {
             git:'http://www.19buy.top',
-            page:1,
-            info:{list:[]}
+            start:0,
+            end:10,
+            info:{list:[],total:null}
         }
     },
     components:{
@@ -53,9 +56,17 @@ export default {
     },
     methods:{
         getData(page){
-            this.axios.get(`/indexPage?p=${page}&limit=5`).then(res => {
-                this.info=res.data.info;
-                console.info(res.data.info)
+             this.axios({
+                method:"post",
+                url:'/getList',
+                params:{
+                    start:this.start,
+                    end:this.end
+                }
+            }).then(res => {
+                console.info(res.data.data);
+
+                this.info=res.data.data;
             }).catch(e => {
                 console.info(e);
             })
@@ -75,6 +86,9 @@ export default {
                 })
             }
             
+        },
+        goDetail(item){
+            this.$router.push("/art/"+item.cid);
         },
         scrollTop(e){
            this.scrollTo("content");
@@ -238,6 +252,12 @@ export default {
                 transition: .5s ease;
                 transform: translateY(-3px);
             }
+        }
+        .ti{
+            text-align: center;
+             color: #9EABB3;
+             font-size: 16px;
+             line-height: 30px;
         }
     }
     .next{
