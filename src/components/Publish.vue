@@ -94,18 +94,42 @@ export default {
             this.inputValue = '';
         },
         submit(e) {
+            if(!this.title){
+                this.$message.error("标题不能为空");
+                return ;
+            } 
+             if(!this.$store.state.art_content.art_content){
+                this.$message.error("内容不能为空");
+                return ;
+            } 
+             if(!this.dynamicTags.toString()){
+                this.$message.error("标签不能为空");
+                return ;
+            } 
+             if(!this.artValue){
+                this.$message.error("类别不能为空");
+                return ;
+            }  
             this.axios({
                 method: 'post',
                 url: '/insetArt',
                 params:{
                     title:this.title,
                     content:this.$store.state.art_content.art_content,
-                    tags:this.dynamicTags.join(","),
+                    tags:this.dynamicTags.toString(),
                     categories:this.artValue,
-                    auth_id:"1"
+                    auth_id:"1",
+                    status:"publish"
                 }
             }).then(res => {
-                console.info(res);
+                if(res.data.data.sts===1){
+                    this.$message({
+                            message: '发布成功',
+                            type: 'success'
+                    });
+                }else{
+                   this.$message.error(res.data.data.back); 
+                }
             })
         }
     }

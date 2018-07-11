@@ -1,10 +1,15 @@
 <template>
     <footer>
-        <p>Copyright © 2017-2018 19buy.top</p>
+        <p @click="login">Copyright © 2017-2018 19buy.top</p>
     </footer>    
 </template>
 <script>
 export default {
+    methods:{
+        login(){
+            this.$router.push("/login");
+        }
+    }
     
 }
 </script>

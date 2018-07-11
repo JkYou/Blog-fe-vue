@@ -65,9 +65,9 @@ exports.authLogin = async ctx => {
         if (res.length && res.length >= 0) {
             //用户已存在 
             if (password && md5(password) === res[0].pass) {
-                const token =Math.random().toString(36).substr(2);
-                ctx.session = { token: token };
-                ctx.state.data = { sts: 1, msg: "登录成功", token: token};
+                const Token =Math.random().toString(36).substr(2);
+                ctx.session = { token: Token };
+                ctx.state.data = { sts: 1, msg: "登录成功", token: Token};
             } else {
                 ctx.state.data = {
                         sts: 0,

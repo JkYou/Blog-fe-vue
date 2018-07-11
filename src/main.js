@@ -26,7 +26,8 @@ import "@/assets/font/iconfont.js";
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 axios.defaults.timeout = 10000;
-axios.defaults.baseURL = "http://localhost:5757/blog/";
+axios.defaults.baseURL = "http://47.98.120.163:8090/blog/";
+// axios.defaults.baseURL = 'http://localhost:5757/blog/';
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
 

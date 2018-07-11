@@ -71,7 +71,7 @@ export default {
                 this.$store.dispatch("SET_OAUTHTOKEN",{
                   oauth_token:res.data.data.token
                 });
-             let redirect = decodeURIComponent(this.$route.query.redirect || '/');
+             let redirect = decodeURIComponent(this.$route.query.redirect || '/admin');
               this.$router.push({path: redirect});
 
 
