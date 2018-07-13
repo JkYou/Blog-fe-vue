@@ -1,3 +1,9 @@
+/*
+ * @Author: youjunkang@hqblicai.com 
+ * @Date: 2018-07-11 17:39:05 
+ * @Last Modified by: youjunkang@hqblicai.com
+ * @Last Modified time: 2018-07-13 09:53:44
+ */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -13,6 +19,7 @@ import {Loading,Menu,Submenu,MenuItem,Input,Select,Option,Button, Form,FormItem,
 import axios from "axios";
 import store from "./store";
 import Highlight from "@/assets/Highlight";
+import VueInsProgressBar from "vue-ins-progress-bar";
 import '@/assets/reset.css'
 // simplemde css
 import 'simplemde/dist/simplemde.min.css'
@@ -26,10 +33,16 @@ import "@/assets/font/iconfont.js";
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 axios.defaults.timeout = 10000;
-axios.defaults.baseURL = "http://47.98.120.163:8090/blog/";
-// axios.defaults.baseURL = 'http://localhost:5757/blog/';
+// axios.defaults.baseURL = "http://47.98.120.163:8090/blog/";
+axios.defaults.baseURL = 'http://localhost:5757/blog/';
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
+const options = {
+  position: 'fixed',
+  show: true,
+  height: '3px'
+}
+Vue.use(VueInsProgressBar, options);//彩虹进度条
 
 Vue.use(Table);
 Vue.use(Popover);
@@ -58,7 +71,6 @@ Vue.use(Main);
 Vue.use(Footer);
 Vue.use(Loading.directive);
 Vue.use(Highlight);
-
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$notify = Notification;

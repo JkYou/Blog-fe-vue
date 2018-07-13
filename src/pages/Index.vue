@@ -54,7 +54,7 @@ export default {
        console.info("index",this.$store.state.oauth_token)
     },
     methods:{
-        getData(page){
+        getData(){
              this.axios({
                 method:"post",
                 url:'/getList',
@@ -78,8 +78,15 @@ export default {
                    type: 'warning'
                 });
             }else{
-                this.axios.get(`/indexPage?p=${this.page}&limit=5`).then(res => {
-                    this.info.list=this.info.list.concat(res.data.info.list);
+               this.axios({
+                method:"post",
+                url:'/getList',
+                params:{
+                    start:this.start,
+                    end:this.end
+                }
+            }).then(res => {
+                    this.info.list=this.info.concat(res.data.data);
                 }).catch(e => {
                     console.info(e);
                 })

@@ -10,14 +10,13 @@ export default {
             this.$router.push("/login");
         }
     }
-    
 }
 </script>
 <style lang="less" scoped>
 footer{
     border-top: 1px solid #f5f5f5;
-    height: 100px;
-    line-height: 100px;
+    height: 80px;
+    line-height: 80px;
     width: 100%;
     text-align: center;
     font-size:16px;

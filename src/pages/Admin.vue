@@ -33,7 +33,7 @@
                                 </el-menu-item>
                                 </router-link>
                                 <router-link to="/admin/setting">
-                                 <el-menu-item index="2">
+                                 <el-menu-item index="4">
                                     <i class="el-icon-setting"></i>
                                     <span slot="title">设置</span>
                                 </el-menu-item>
@@ -46,7 +46,7 @@
                     <el-main>
                         <router-view></router-view>
                     </el-main>
-                    <el-footer>Footer</el-footer>
+                    <el-footer class="tft">copyright © 2017-2018 19buy.top</el-footer>
                     </el-container>
                 </el-container>
             </el-container>
@@ -110,6 +110,10 @@ export default {
     
     .el-container:nth-child(7) .el-aside {
         line-height: 320px;
+    }
+    .tft{
+        color: #f5f5f5;
+        font-size: 14px;
     }
 }
 

@@ -1,4 +1,4 @@
-//文章发布页面
+
 <template>
     <div class="publish">
         <el-row :gutter="20">
@@ -22,7 +22,7 @@
             </el-col>
         </el-row>
         <el-row style="margin:30px 0; text-align:left;">
-            <h3 style="margin-bottom:20px;">请选择文章标签</h3>
+            <h3 style="margin-bottom:20px;">标签</h3>
             <el-col :span="24">
                 <el-tag
                     :key="tag"
@@ -57,6 +57,12 @@
     </div>
 </template>
 <script>
+/*
+ * @Author: youjunkang@hqblicai.com 
+ * @Date: 2018-07-11 17:38:42 
+ * @Last Modified by: youjunkang@hqblicai.com
+ * @Last Modified time: 2018-07-12 11:43:27
+ */
 import SEditor from '$com/Editor'
 export default {
     name:"publish",
