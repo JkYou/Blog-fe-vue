@@ -84,19 +84,16 @@ const router = new Router({
 router.beforeEach((to,from,next)=>{
   if(to.meta.requireAuth===true){
     //权限路由
-    if (store.state.oauth_token ? store.state.oauth_token : localStorage.getItem("token")){
-        next();
-      }else{
-        next({
-          path: '/login',
-          query: { redirect: to.fullPath }  // 将跳转的路由path作为参数，登录成功后跳转到该路由
-        })
-      }
+    if (store.state.oauth_token ? store.state.oauth_token : sessionStorage.getItem("token")) {
+      next();
+    } else {
+      next({ path: "/login", query: { redirect: to.fullPath } }); // 将跳转的路由path作为参数，登录成功后跳转到该路由
+    }
   }else{
     next();
   }
   if (to.meta.checkLogin===true){
-    if (store.state.oauth_token ? store.state.oauth_token:localStorage.getItem("token")) {
+    if (store.state.oauth_token ? store.state.oauth_token:sessionStorage.getItem("token")) {
         next({ path: "/admin", query: { redirect: to.fullPath } }); // 将跳转的路由path作为参数，登录成功后跳转到该路由
       } else {
         next();

@@ -1,7 +1,7 @@
 const CONF = {
   serverHost: "localhost",
   networkTimeout: 30000,
-  port: "5757",
+  port: "8090",
   rootPathname: "",
 
   /**

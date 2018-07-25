@@ -36,4 +36,31 @@ function debounce (func, wait, immediate) {
         return result;
     };
 };
-export { getQueryString,debounce }
+
+function timerecover(unix) {
+    var myDate = new Date(parseInt(unix));
+    var year = myDate.getFullYear();
+    var month = parseInt(myDate.getMonth()) + 1;
+    if (month < 10) {
+        month = "0" + month
+    }
+    var date = myDate.getDate();
+    if (parseInt(date) < 10) {
+        date = "0" + date
+    }
+    var hours = myDate.getHours();
+    if (parseInt(hours) < 10) {
+        hours = "0" + hours
+    }
+    var minutes = myDate.getMinutes();
+    if (parseInt(minutes) < 10) {
+        minutes = "0" + minutes
+    }
+    var seconds = myDate.getSeconds();
+    if (parseInt(seconds) < 10) {
+        seconds = "0" + seconds
+    }
+    var day = year + "-" + month + "-" + date+" "+hours+":"+minutes+":"+seconds;
+    return day;
+}
+export { getQueryString, debounce, timerecover }

@@ -6,7 +6,7 @@
       stripe
       border style="width: 1232px;">
       <el-table-column
-        prop="date"
+        prop="created"
         label="日期"
         width="210">
       </el-table-column>
@@ -16,12 +16,12 @@
         width="400">
       </el-table-column>
       <el-table-column
-        prop="categies"
+        prop="categories"
         label="类别"
         width="210">
       </el-table-column>
       <el-table-column
-        prop="modifyTime"
+        prop="modified"
         label="最后修改时间"
         width="210">
       </el-table-column>
@@ -48,25 +48,39 @@
     data() {
       return {
         tableData: [{
-          date:"2018-07-09",
+          created:"2018-07-09",
           title:"钢铁是怎么炼成的",
-          categies:"js",
-          modifyTime:"2018-07-12"
-        }]
+          categories:"js",
+          modified:"2018-07-12"
+        }],
+        start:0,
+        end:5
       }
     },
     created() {
+      this.getList()
       
-    },
+    }, 
     methods: {
       handleEdit(index,row) {
         console.log(row);
       },
       handleDelete(index,row) {
+        this.$confirm("是否要删除","提示",{
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(()=>{
+          console.info('取消删除')
+        })
         console.info(row);
       },
       getList(start,end){
-
          this.axios({
               method:"post",
               url:'/getList',
@@ -76,7 +90,7 @@
               }
           }).then(res => {
               console.info(res.data.data);
-              this.tableData=res.data.data;
+              this.tableData=res.data.data.list;
           }).catch(e => {
               console.info(e);
           })

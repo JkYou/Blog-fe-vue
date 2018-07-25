@@ -25,10 +25,10 @@
                   <time>{{new Date(item.modified).toDateString()}}</time>
             </footer> 
         </article>  
-        <p v-show="end>=info.total" class="ti">没有更多了</p>       
+        <p v-show="nomore" class="ti">没有更多了</p>       
     </div>
     
-    <div class="next" v-show="end<=info.total"><i class="icon iconfont icon-moreunfold fn" @click.stop="loadMore"></i></div>  
+    <div class="next" v-show="!nomore"><i class="icon iconfont icon-moreunfold fn" @click.stop="loadMore"></i></div>  
     <Foot/>
     </div>
 </template>
@@ -39,9 +39,10 @@ export default {
     data () {
         return {
             git:'http://www.19buy.top',
-            start:0,
-            end:10,
-            info:{list:[],total:null}
+            pageNum:1,
+            pageSize:5,
+            info:{list:[],total:null},
+            nomore:false,
         }
     },
     components:{
@@ -59,38 +60,36 @@ export default {
                 method:"post",
                 url:'/getList',
                 params:{
-                    start:this.start,
-                    end:this.end
+                    pageNum:this.pageNum,
+                    pageSize:this.pageSize
                 }
             }).then(res => {
-                console.info(res.data.data);
-
                 this.info=res.data.data;
             }).catch(e => {
                 console.info(e);
             })
         },
         loadMore(){
-            this.page++;
-            if(this.page>this.info.pages){
-                this.$message({
-                    message: '没有更多了',
-                   type: 'warning'
-                });
-            }else{
-               this.axios({
-                method:"post",
-                url:'/getList',
-                params:{
-                    start:this.start,
-                    end:this.end
-                }
-            }).then(res => {
-                    this.info.list=this.info.concat(res.data.data);
-                }).catch(e => {
-                    console.info(e);
-                })
-            }
+            this.pageNum++;
+            this.axios({
+                    method:"post",
+                    url:'/getList',
+                    params:{
+                        pageNum:this.pageNum,
+                        pageSize:this.pageSize
+                    }
+                }).then(res => {
+                    if(res.data.data.list.length || res.data.data.list.length>0){
+                          this.info.list=this.info.list.concat(res.data.data.list);
+                          if( res.data.data.list.length<this.pageSize){
+                              this.nomore=true;
+                          }
+                    }else{
+                        this.nomore=true;
+                    }
+                    }).catch(e => {
+                        console.info(e);
+                    })
             
         },
         goDetail(item){

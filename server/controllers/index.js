@@ -93,17 +93,25 @@ exports.authLogin = async ctx => {
 /**
  * desc: 根据起始和结束页码获取文章列表
  * @params:{
- * start:从0开始
- * end : max: total
+ * pageNum:从0开始
+ * pageSize : max: total
  * }
  * 
 */
 exports.getArtByPage = async ctx => {
-    let { start,end } = ctx.request.query;
+    let { pageNum, pageSize } = ctx.request.query;
     //获取总数
     let total = await Model.getArtCount();
+    if(!pageSize){
+        pageSize=5
+    }
+    if(!pageNum){
+        ctx.state.data = {sts:1, msg: "参数缺失" };
+        return;
+    }
+    pageNum = (pageNum - 1) * pageSize;
     //获取列表
-    await Model.getArtListByPage(start,end).then(async res => {
+    await Model.getArtListByPage(pageNum, pageSize).then(async res => {
         ctx.state.data = { total: total[0]["count(*)"], list: res };
     })
 };

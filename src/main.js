@@ -2,7 +2,7 @@
  * @Author: youjunkang@hqblicai.com 
  * @Date: 2018-07-11 17:39:05 
  * @Last Modified by: youjunkang@hqblicai.com
- * @Last Modified time: 2018-07-13 09:53:44
+ * @Last Modified time: 2018-07-25 14:18:29
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -33,8 +33,8 @@ import "@/assets/font/iconfont.js";
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 axios.defaults.timeout = 10000;
-// axios.defaults.baseURL = "http://47.98.120.163:8090/blog/";
-axios.defaults.baseURL = 'http://localhost:5757/blog/';
+axios.defaults.baseURL = "http://47.98.120.163:8090/blog/";
+// axios.defaults.baseURL = 'http://localhost:5757/blog/';
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
 const options = {
@@ -73,6 +73,7 @@ Vue.use(Loading.directive);
 Vue.use(Highlight);
 Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 /* eslint-disable no-new */

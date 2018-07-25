@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.3",
+    "cors": "^2.8.4",
     "koa": "^2.0.0",
     "koa-bodyparser": "^3.2.0",
+    "koa-cors": "0.0.16",
     "koa-log4": "^2.1.0",
     "koa-logger": "^3.2.0",
     "koa-mysql-session": "0.0.2",

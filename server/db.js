@@ -51,8 +51,13 @@ exports.getArtCount = () => {
 };
 
 //分页获取博客文章数据
-exports.getArtListByPage = (pageStart, pageEnd) => {
-  let _sql = `select * from t_contents limit ${pageStart},${pageEnd};`;
+/**
+ * 
+ * @param {*页码} pageNum 
+ * @param {*页数} pageSize 
+ */
+exports.getArtListByPage = (pageNum, pageSize) => {
+    let _sql = `select * from t_contents  order by cid DESC  limit ${pageNum},${pageSize};`;
   return query(_sql);
 };
 //根据id搜索文章
