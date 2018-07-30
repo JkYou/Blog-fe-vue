@@ -1,7 +1,7 @@
 let { ApiClient} = require("./sdk-nodejs-24711622");
 const client = new ApiClient({
-  appkey: 24711622,
-  appsecret: "351c55c6b58f79360948333e84ad7b1f",
+  appkey: 1,
+  appsecret: "1",
   REST_URL: "http://gw.api.taobao.com/router/rest"
 });
 
