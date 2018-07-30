@@ -17,14 +17,20 @@ router.post("/selectById",controllers.getDetailById)
 
 router.post("/insetArt", adminCon.insertArt);
 
-router.post("/itemGet", tbk.ItemGet);
-router.post("/ItemCouponGet", tbk.ItemCouponGet);
+
 
 
 //----------------------------------------------------------------------------------------------------------------------'
 /**
  * tbk api 
  */
+router.post("/itemGet", tbk.ItemGet);
+router.post("/itemCouponGet", tbk.ItemCouponGet);
+router.post("/shopGet", tbk.ShopGet);
+router.post("/tklCreate", tbk.TpwdCreate);
+router.post("/tqgGet", tbk.TqgGet);
+router.post("/juhuasuan", tbk.JuSearch);
+
 
 
 
