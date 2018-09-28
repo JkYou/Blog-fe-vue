@@ -19,22 +19,22 @@ exports.ItemGet = async ctx =>{
         {
           fields: "num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick",
           q: q,
-          cat: cat,
+          // cat: cat,
           itemloc: itemloc,
-          sort: sort,
-          is_tmall: is_tmall,
-          is_overseas: is_overseas,
-          start_price: start_price,
-          end_price: end_price,
-          start_tk_rate: start_tk_rate,
-          end_tk_rate: end_tk_rate,
-          platform: platform,
+          // sort: sort,
+          // is_tmall: is_tmall,
+          // is_overseas: is_overseas,
+          // start_price: start_price,
+          // end_price: end_price,
+          // start_tk_rate: start_tk_rate,
+          // end_tk_rate: end_tk_rate,
+          // platform: platform,
           page_no: page_no,
           page_size: page_size
         },
         function (error, response) {
           if (!error) ctx.state.data = { res: response };
-          else ctx.state.data = { code: 0, msg: "请求失败" };
+          else ctx.state.data = { code: 0, msg: "请求失败", data: error };
           resolve();
         }
       );

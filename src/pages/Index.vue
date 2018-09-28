@@ -1,11 +1,11 @@
 <template>
     <div class="page" ref="page">
         <div class="git"><a :href="git">support me on store</a></div>      
-        <header class="main-header" style="background-image: url(https://image.static.i-meto.com/uploads/2018/04/wallhaven-615414.jpg)">
+        <header class="main-header">
             <div class="vertical">
                 <div class="main-header-content inner">
-                    <h1 class="page-title">编程笔记</h1>
-                    <h2 class="page-description" id="hitokoto">众里寻他千百度。蓦然回首，那人却在，灯火阑珊处。</h2>
+                    <h1 class="page-title">Jk You</h1>
+                    <h2 class="page-description" id="hitokoto">众里寻她千百度。蓦然回首，那人却在，灯火阑珊处。</h2>
                 </div>
             </div>
             <a href="#" class="scroll-down" @click="scrollTop"><i class="icon iconfont icon-moreunfold fn"></i></a>
@@ -151,6 +151,7 @@ export default {
         text-align: center;
         background: #222 no-repeat center center;
         background-size: cover;
+        background-image: url(../assets/images/index-bg.jpg);
         overflow: hidden;
         margin-bottom: 30px;
         .vertical{
